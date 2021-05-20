@@ -1,5 +1,3 @@
 <footer class="footer">
-  <div class="float-right">
-    <a href="#" >关于</a>
-  </div>
+  <p class="text-muted text-center">© 2021 Copyright</p>
 </footer>
