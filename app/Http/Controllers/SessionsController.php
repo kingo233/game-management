@@ -8,6 +8,9 @@ class SessionsController extends Controller
 {
     //
     public function create(){
+        if(Auth::check()){
+            return redirect(route('users.show',[Auth::user()]));
+        }
         return view('sessions.create');
     }
     public function store(Request $request)

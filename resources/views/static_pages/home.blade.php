@@ -5,6 +5,9 @@
         <h1>欢迎来到网游后端管理系统</h1>
         <br>
         <br>
-        <button class="btn btn-primary btn-lg">现在开始</button>
+        <br>
+        <p>
+        <a class="btn btn-lg btn-primary" href="{{ route('login') }}" role="button">现在开始</a>
+      </p>
     </div>
 @stop
