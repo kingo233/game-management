@@ -22,4 +22,7 @@ class UserPolicy
     {
         return $currentUser->id === $user->id;
     }
+    public function index(User $user){
+        return true;
+    }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Mail;
-
+use Auth;
 class UsersController extends Controller
 {
     //
@@ -16,6 +16,13 @@ class UsersController extends Controller
         $this->middleware('guest', [
             'only' => ['create']
         ]);
+    }
+    public function index()
+    {
+        $cuser = Auth::user();
+        $this->authorize('index',$cuser);
+        $users = User::paginate(6);
+        return view('users.index', compact('users'));
     }
     public function edit(User $user)
     {
