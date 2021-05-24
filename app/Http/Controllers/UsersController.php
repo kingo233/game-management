@@ -17,11 +17,18 @@ class UsersController extends Controller
             'only' => ['create']
         ]);
     }
+    public function destroy(User $user)
+    {
+        $this->authorize('destroy', $user);
+        $user->delete();
+        session()->flash('success', '成功删除用户！');
+        return back();
+    }
     public function index()
     {
         $cuser = Auth::user();
         $this->authorize('index',$cuser);
-        $users = User::paginate(6);
+        $users = User::paginate(10);
         return view('users.index', compact('users'));
     }
     public function edit(User $user)
@@ -30,6 +37,7 @@ class UsersController extends Controller
         return view('users.edit', compact('user'));
     }
     public function show(User $user){
+        $this->authorize('update', $user);
         return view('users.show',compact('user'));
     }
     public function create(){

@@ -16,7 +16,7 @@ class AddActivationToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->string('activation_token')->nullable();
-            $table->boolean('activation')->default(false);
+            $table->boolean('activated')->default(false);
         });
     }
 
@@ -29,8 +29,13 @@ class AddActivationToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->dropColumn('activation_token');
-            $table->dropColumn('activated');
+            if (Schema::hasColumn('users', 'activation_token')) { # 如果存在 users, email 列则执行
+                $table->dropColumn('activation_token');
+            }
+            if (Schema::hasColumn('users', 'activated')) {
+                $table->dropColumn('activated');
+            }
+            
         });
     }
 }
