@@ -16,6 +16,9 @@ class UsersController extends Controller
         $this->middleware('guest', [
             'only' => ['create']
         ]);
+        $this->middleware('throttle:10,60', [
+            'only' => ['store']
+        ]);
     }
     
     public function destroy(User $user)
