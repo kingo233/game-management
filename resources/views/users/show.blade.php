@@ -11,7 +11,7 @@
   <div class="offset-md-1 col-md-4">
     <div class="small-box bg-green">
       <div class="inner">
-        <h3 style="font-size:40px">53 元</h3>
+        <h3 style="font-size:40px">{{ $user->credit }} 元</h3>
 
         <p>余额</p>
       </div>
@@ -26,7 +26,13 @@
   <div class="offset-md-1 col-md-4">
     <div class="small-box bg-blue">
       <div class="inner">
-        <h3 style="font-size:40px">正常</h3>
+        <h3 style="font-size:40px">
+          @if ($user->is_banned)
+            冻结
+          @else
+            正常
+          @endif
+        </h3>
 
         <p>账号状态</p>
       </div>
