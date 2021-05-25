@@ -32,7 +32,7 @@ class SessionsController extends Controller
        if (Auth::attempt($credentials, $request->has('remember'))) {
             if(Auth::user()->activated) {
                 session()->flash('success', '欢迎回来！');
-                return redirect('/');
+                return redirect(route('users.show',[Auth::user()]));
             } 
             else {
                 Auth::logout();

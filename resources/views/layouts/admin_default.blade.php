@@ -16,6 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ URL::asset('admin-lte/dist/css/adminlte.min.css') }}">
   <!-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -62,35 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- SidebarSearch Form -->
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                个人信息管理
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('users.show',$user) }}" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>编辑资料</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>查看充值信息</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+      @include('shared._menu',$user)
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
@@ -118,11 +91,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
+    <section class="content">
       <div class="container-fluid">
+        @include('shared._messages')
         @yield('content')
       </div><!-- /.container-fluid -->
-    </div>
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

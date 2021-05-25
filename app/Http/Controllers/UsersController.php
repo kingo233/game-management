@@ -20,7 +20,21 @@ class UsersController extends Controller
             'only' => ['store']
         ]);
     }
-    
+    public function showdie(User $user){
+        $this->authorize('selfdie', $user);
+        return view('users.confirmdie',compact('user'));
+    }
+    public function selfdie(User $user,Request $request){
+        $this->authorize('selfdie', $user);
+        $credentials = $this->validate($request, [
+            'password' => 'confirmed|min:6'
+        ]);
+        
+        $user->delete();
+        session()->flash('success', '成功删除用户！');
+        return redirect('/');
+
+    }
     public function destroy(User $user)
     {
         $this->authorize('destroy', $user);

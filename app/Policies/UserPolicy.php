@@ -31,4 +31,9 @@ class UserPolicy
         }
         return $currentUser->id != $user->id;
     }
+    public function selfdie(User $currentUser, User $user)
+    {
+        if($currentUser->id != $user->id)return false;
+        return $currentUser->priority != 0 || $currentUser->priority != 1;
+    }
 }
