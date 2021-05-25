@@ -12,11 +12,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="admin-lte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{ URL::asset('admin-lte/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="admin-lte/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ URL::asset('admin-lte/dist/css/adminlte.min.css') }}">
   <!-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -56,7 +55,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="{{ $user->gravatar() }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ $user->name }}</a>
+          <a href="{{ route('users.show',$user) }}" class="d-block">{{ $user->name }}</a>
         </div>
       </div>
 
@@ -77,7 +76,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{{ route('users.show',$user) }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>编辑资料</p>
                 </a>
@@ -145,6 +144,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <script src="{{ mix('js/app.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="admin-lte/dist/js/adminlte.min.js"></script>
+<script src="{{ URL::asset('admin-lte/dist/js/adminlte.min.js') }}"></script>
 </body>
 </html>
