@@ -56,6 +56,6 @@ class User extends Authenticatable
         });
     }
     public function charges(){
-        return $this->hasMany(Status::class);
+        return $this->hasMany(UserCharge::class);
     }
 }

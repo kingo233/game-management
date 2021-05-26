@@ -26,7 +26,7 @@
             </li>
 
             <li class="nav-item">
-            <a href="#" class="nav-link @yield('charge_history','')">
+            <a href="{{ route('charge_history',$user) }}" class="nav-link @yield('charge_history','')">
                 <i class="far fa-circle nav-icon"></i>
                 <p>充值记录</p>
             </a>

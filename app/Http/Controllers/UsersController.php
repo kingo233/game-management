@@ -21,6 +21,10 @@ class UsersController extends Controller
             'only' => ['store']
         ]);
     }
+    public function charge_history(User $user){
+        $data = DB::table('user_charges')->where('uid',$user->id)->orderBy('created_at', 'desc')->paginate(10);
+        return view('users.charge_history',compact(['data','user']));
+    }
     public function showcharge(User $user){
         return view('users.showcharge',compact('user'));
     }
