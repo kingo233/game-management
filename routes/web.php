@@ -20,6 +20,8 @@ Route::get('signup','UsersController@create')->name('signup');
 Route::resource('users', 'UsersController');
 Route::get('users/{user}/confirm_die','UsersController@showdie')->name('showdie');
 Route::post('users/{user}/selfdie','UsersController@selfdie')->name('selfdie');
+Route::get('users/{user}/charge','UsersController@showcharge')->name('showcharge');
+Route::post('users/{user}/charge','UsersController@charge')->name('charge');
 
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');

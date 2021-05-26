@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Mail;
 use Auth;
+use DB;
 class UsersController extends Controller
 {
     //
@@ -19,6 +20,27 @@ class UsersController extends Controller
         $this->middleware('throttle:10,60', [
             'only' => ['store']
         ]);
+    }
+    public function showcharge(User $user){
+        return view('users.showcharge',compact('user'));
+    }
+    public function charge(User $user,Request $request){
+        if($request->money >= 0){
+            DB::table('user_charges')->insert([
+                'uid' => $user->id,
+                'money' => $request->money, 
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+            $user->credit += $request->money;
+            $user->save();
+            session()->flash('success','充值成功！');
+            return redirect(route('users.show',$user));
+        }
+        else{
+            session()->flash('danger','金额必须大于等于0！');
+            return redirect()->back()->withInput();
+        }
     }
     public function showdie(User $user){
         $this->authorize('selfdie', $user);

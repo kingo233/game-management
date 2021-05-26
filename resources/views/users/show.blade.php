@@ -1,6 +1,8 @@
 @extends('layouts.admin_default')
 @section('page_name', '编辑资料')
 
+@section('edit','active')
+
 @section('path')
 <li class="breadcrumb-item">个人信息管理</li>
 <li class="breadcrumb-item"><a href="{{ route('users.show',$user) }}">编辑资料</a></li>
@@ -18,7 +20,7 @@
       <div class="icon">
         <i class="ion ion-stats-bars"></i>
       </div>
-      <a href="#" class="small-box-footer">
+      <a href="{{ route('showcharge',$user) }}" class="small-box-footer">
         前去充值<i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>

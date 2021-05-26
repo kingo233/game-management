@@ -12,16 +12,23 @@
         </a>
         <ul class="nav nav-treeview">
             <li class="nav-item">
-            <a href="{{ route('users.show',$user) }}" class="nav-link active">
+            <a href="{{ route('users.show',$user) }}" class="nav-link @yield('edit','')">
                 <i class="far fa-circle nav-icon"></i>
                 <p>编辑资料</p>
             </a>
             </li>
 
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('showcharge',$user) }}" class="nav-link @yield('charge','')">
                 <i class="far fa-circle nav-icon"></i>
-                <p>查看充值信息</p>
+                <p>充值</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a href="#" class="nav-link @yield('charge_history','')">
+                <i class="far fa-circle nav-icon"></i>
+                <p>充值记录</p>
             </a>
             </li>
 
