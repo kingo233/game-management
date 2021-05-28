@@ -21,6 +21,12 @@ class UsersController extends Controller
             'only' => ['store']
         ]);
     }
+    public function showall(User $user){
+        $users = User::paginate(10);
+        $nowuser = Auth::user();
+        $this->authorize('index',$nowuser);
+        return view('users.modify_all',compact(['user','users']));
+    }
     public function charge_history(User $user){
         $data = DB::table('user_charges')->where('uid',$user->id)->orderBy('created_at', 'desc')->paginate(10);
         return view('users.charge_history',compact(['data','user']));

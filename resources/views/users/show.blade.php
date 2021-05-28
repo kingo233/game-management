@@ -1,7 +1,8 @@
 @extends('layouts.admin_default')
-@section('page_name', '编辑资料')
+@section('page_name', '编辑' . $user->name .'的资料')
 
 @section('edit','active')
+@section('self_management','active')
 
 @section('path')
 <li class="breadcrumb-item">个人信息管理</li>

@@ -2,6 +2,7 @@
 @section('page_name', '充值')
 
 @section('charge','active')
+@section('self_management','active')
 
 @section('path')
 <li class="breadcrumb-item">个人信息管理</li>

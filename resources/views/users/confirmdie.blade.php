@@ -1,6 +1,10 @@
 @extends('layouts.admin_default')
 @section('page_name', '确认销毁账号')
 
+
+@section('selfdie','active')
+@section('self_management','active')
+
 @section('path')
 <li class="breadcrumb-item">个人信息管理</li>
 <li class="breadcrumb-item"><a href="{{ route('showdie',$user) }}">销毁账号</a></li>

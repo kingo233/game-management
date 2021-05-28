@@ -23,6 +23,8 @@ Route::post('users/{user}/selfdie','UsersController@selfdie')->name('selfdie');
 Route::get('users/{user}/charge','UsersController@showcharge')->name('showcharge');
 Route::post('users/{user}/charge','UsersController@charge')->name('charge');
 Route::get('users/{user}/charge_history','UsersController@charge_history')->name('charge_history');
+Route::get('users/{user}/modify_table','UsersController@showall')->name('users.showall');
+
 
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');

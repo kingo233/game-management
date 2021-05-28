@@ -1,7 +1,8 @@
 @extends('layouts.admin_default')
-@section('page_name', '查看充值记录')
+@section('page_name', '查看' . $user->name . '的充值记录')
 
 @section('charge_history','active')
+@section('self_management','active')
 
 @section('path')
 <li class="breadcrumb-item">个人信息管理</li>

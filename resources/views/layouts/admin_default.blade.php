@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ $user->name }}-网游后端管理系统</title>
+  <title>{{ Auth::user()->name }}-网游后端管理系统</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="{{ $user->gravatar() }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{ route('users.show',$user) }}" class="d-block">{{ $user->name }}</a>
+          <a href="{{ route('users.show',Auth::user()) }}" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 

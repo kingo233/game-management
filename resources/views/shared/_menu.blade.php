@@ -3,7 +3,7 @@
         <!-- Add icons to the links using the .nav-icon class
             with font-awesome or any other icon font library -->
         <li class="nav-item menu-open">
-        <a href="#" class="nav-link active">
+        <a href="#" class="nav-link @yield('self_management','')">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
             个人信息管理
@@ -34,13 +34,32 @@
 
             @if($user->priority == 3)
             <li class="nav-item">
-                <a href="{{ route('showdie',$user) }}" class="nav-link">
+                <a href="{{ route('showdie',$user) }}" class="nav-link @yield('selfdie','')">
                     <i class="nav-icon fas fa-power-off"></i>
                     <p>销毁账号</p>
                 </a>
             </li>
             @endif
         </ul>
+        </li>
+
+        <li class="nav-item menu-open">
+            <a href="#" class="nav-link @yield('user_management','')">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    玩家管理
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('users.showall',$user) }}" class="nav-link @yield('modify_table','')">
+                    <i class="far fa-circle nav-icon"></i>
+                <p>玩家信息修改</p>
+            </a>
+                </li>
+            </ul>
         </li>
 
         <li class="nav-item">
