@@ -20,6 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </head>
 <body class="hold-transition sidebar-mini">
+<script src="{{ mix('js/app.js') }}"></script>
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -117,7 +118,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- REQUIRED SCRIPTS -->
 
-<script src="{{ mix('js/app.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ URL::asset('admin-lte/dist/js/adminlte.min.js') }}"></script>
 </body>
