@@ -56,8 +56,14 @@
                 <li class="nav-item">
                     <a href="{{ route('users.showall',$user) }}" class="nav-link @yield('modify_table','')">
                     <i class="far fa-circle nav-icon"></i>
-                <p>玩家信息修改</p>
-            </a>
+                    <p>玩家信息修改</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('users.banall',$user) }}" class="nav-link @yield('ban_table','')">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>封禁账号</p>
+                    </a>
                 </li>
             </ul>
         </li>

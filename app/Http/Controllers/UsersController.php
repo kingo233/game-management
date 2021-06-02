@@ -21,6 +21,20 @@ class UsersController extends Controller
             'only' => ['store']
         ]);
     }
+    public function ban(User $user,Request $request){
+        $nowuser = Auth::user();
+        $this->authorize('index',$nowuser);
+        $user->is_banned = true;
+        $user->save();
+        session()->flash('success','封禁成功！');
+        return redirect(route('users.show',$user));
+    }
+    public function ban_all(User $user){
+        $users = User::paginate(10);
+        $nowuser = Auth::user();
+        $this->authorize('index',$nowuser);
+        return view('users.ban_all',compact(['user','users']));
+    }
     public function showall(User $user){
         $users = User::paginate(10);
         $nowuser = Auth::user();

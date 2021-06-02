@@ -26,7 +26,7 @@ class UserPolicy
         return $currentUser->priority == 0 || $currentUser->priority == 1;
     }
     public function destroy(User $currentUser, User $user){
-        if($currentUser->priority != 0 & $currentUser->priority != 1){
+        if($currentUser->priority != 0 && $currentUser->priority != 1){
             return false;
         }
         return $currentUser->id != $user->id;
@@ -34,6 +34,6 @@ class UserPolicy
     public function selfdie(User $currentUser, User $user)
     {
         if($currentUser->id != $user->id)return false;
-        return $currentUser->priority != 0 || $currentUser->priority != 1;
+        return $currentUser->priority != 0 && $currentUser->priority != 1;
     }
 }
