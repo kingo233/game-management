@@ -42,7 +42,7 @@
       <div class="icon">
         <i class="ion ion-stats-bars"></i>
       </div>
-      <a href="#" class="small-box-footer">
+      <a href="{{ route('users.show_complain',$user) }}" class="small-box-footer">
         前去申诉<i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>

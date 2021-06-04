@@ -21,6 +21,31 @@ class UsersController extends Controller
             'only' => ['store']
         ]);
     }
+    public function complain(User $user,Request $request){
+        $ban_record = DB::table('banned_history')
+                        ->where('uid',$user->id)
+                        ->orderBy('created_at','desc')
+                        ->first();
+        DB::table('banned_history')
+            ->where([
+                ['uid',$user->id],
+                ['id',$ban_record->id]
+            ])
+            ->update(['complaint' => $request->complaint]);
+        session()->flash('success','成功提交申诉！');
+        return redirect(route('users.show',$user));
+    }
+    public function show_complain(User $user){
+        if($user->is_banned == false){
+            session()->flash('info','您的账号正常，无需申诉');
+            return redirect(route('users.show',$user));
+        }
+        $ban_record = DB::table('banned_history')
+                        ->where('uid',$user->id)
+                        ->orderBy('created_at','desc')
+                        ->first();
+        return view('users.complain',compact(['user','ban_record']));
+    }
     public function ban(User $user,Request $request){
         $nowuser = Auth::user();
         $this->authorize('index',$nowuser);
