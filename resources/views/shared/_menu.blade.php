@@ -32,6 +32,13 @@
             </a>
             </li>
 
+            <li class="nav-item">
+            <a href="{{ route('users.show_complain',$user) }}" class="nav-link @yield('show_complain','')">
+                <i class="far fa-circle nav-icon"></i>
+                <p>账号申诉</p>
+            </a>
+            </li>
+
             @if($user->priority == 3)
             <li class="nav-item">
                 <a href="{{ route('showdie',$user) }}" class="nav-link @yield('selfdie','')">
@@ -43,6 +50,7 @@
         </ul>
         </li>
 
+        @if($user->priority == 0 || $user->priority)
         <li class="nav-item menu-open">
             <a href="#" class="nav-link @yield('user_management','')">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -67,6 +75,7 @@
                 </li>
             </ul>
         </li>
+        @endif
 
         <li class="nav-item">
         <a href="#" class="nav-link">

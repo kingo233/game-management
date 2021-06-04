@@ -26,6 +26,12 @@ class UsersController extends Controller
         $this->authorize('index',$nowuser);
         $user->is_banned = true;
         $user->save();
+        DB::table('banned_history')->insert([
+            'uid' => $user->id,
+            'reason' => $request->reason,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
         session()->flash('success','封禁成功！');
         return redirect(route('users.show',$user));
     }
