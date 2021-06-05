@@ -21,6 +21,46 @@ class UsersController extends Controller
             'only' => ['store']
         ]);
     }
+    public function deal_complain(User $user,Request $request){
+        $nowuser = Auth::user();
+        $this->authorize('index',$nowuser);
+        if($request->cancel == "cancel"){
+            $user->is_banned = false;
+            $user->save();
+            DB::table('banned_history')
+                ->where('id',$request->id)
+                ->update([
+                    'result' => '解除封禁'
+                ]);
+            session()->flash('success','成功处理！');
+            return redirect(route('users.complain_table',$nowuser));
+        }
+        else if($request->cancel == "remain"){
+            DB::table('banned_history')
+                ->where('id',$request->id)
+                ->update([
+                    'result' => '保留封禁'
+                ]);
+            session()->flash('success','成功处理！');
+            return redirect(route('users.complain_table',$nowuser));
+        }
+        else{
+            session()->flash('error','请选择处理结果！');
+            return redirect(route('users.complain_table',$nowuser));
+        }
+    }
+    public function complain_table(User $user){
+        $nowuser = Auth::user();
+        $this->authorize('index',$nowuser);
+        $complains = DB::table('banned_history')
+                        ->where([
+                            ['complaint','!=',''],
+                            ['result','']
+                        ])
+                        ->paginate(10);
+        return view('users.complain_table',compact(['user','complains']));
+        
+    }
     public function complain(User $user,Request $request){
         $ban_record = DB::table('banned_history')
                         ->where('uid',$user->id)
@@ -31,7 +71,10 @@ class UsersController extends Controller
                 ['uid',$user->id],
                 ['id',$ban_record->id]
             ])
-            ->update(['complaint' => $request->complaint]);
+            ->update([
+                'complaint' => $request->complaint,
+                'result' => ''
+                ]);
         session()->flash('success','成功提交申诉！');
         return redirect(route('users.show',$user));
     }
@@ -58,7 +101,7 @@ class UsersController extends Controller
             'updated_at' => now()
         ]);
         session()->flash('success','封禁成功！');
-        return redirect(route('users.show',$user));
+        return redirect(route('users.show',$nowuser));
     }
     public function ban_all(User $user){
         $users = User::paginate(10);

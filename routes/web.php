@@ -24,11 +24,15 @@ Route::get('users/{user}/charge','UsersController@showcharge')->name('showcharge
 Route::post('users/{user}/charge','UsersController@charge')->name('charge');
 Route::get('users/{user}/charge_history','UsersController@charge_history')->name('charge_history');
 Route::get('users/{user}/modify_table','UsersController@showall')->name('users.showall');
+
 Route::get('users/{user}/ban_table','UsersController@ban_all')->name('users.banall');
 Route::post('users/{user}/banned','UsersController@ban')->name('users.ban');
 
 Route::get('users/{user}/complain','UsersController@show_complain')->name('users.show_complain');
 Route::post('users/{user}/complain','UsersController@complain')->name('users.complain');
+
+Route::get('users/{user}/show_complain','UsersController@complain_table')->name('users.complain_table');
+Route::post('users/{user}/deal_complain','UsersController@deal_complain')->name('users.deal_complain');
 
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');

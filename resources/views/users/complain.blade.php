@@ -44,7 +44,7 @@
 
         @if($ban_record->result != "")
         <div class="form-group">
-          <label for="result">申诉理由：</label>  
+          <label for="result">处理结果：</label>  
           <textarea name="result" class="form-control" disabled>{{ $ban_record->result }}</textarea>
         </div>
         @endif

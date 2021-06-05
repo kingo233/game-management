@@ -50,7 +50,7 @@
         </ul>
         </li>
 
-        @if($user->priority == 0 || $user->priority)
+        @if($user->priority == 0 || $user->priority == 1)
         <li class="nav-item menu-open">
             <a href="#" class="nav-link @yield('user_management','')">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -67,10 +67,18 @@
                     <p>玩家信息修改</p>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a href="{{ route('users.banall',$user) }}" class="nav-link @yield('ban_table','')">
                     <i class="far fa-circle nav-icon"></i>
                     <p>封禁账号</p>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="{{ route('users.complain_table',$user) }}" class="nav-link @yield('complain_table','')">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>处理申诉</p>
                     </a>
                 </li>
             </ul>
