@@ -18,6 +18,14 @@ class UserPolicy
     {
         //
     }
+    public function modifyadmin(User $nowuser,User $admin){
+        if($nowuser->priority != 0)return false;
+        if($admin->priority == 0)return false;
+        return true;
+    }
+    public function superadmin(User $user){
+        return $user->priority == 0;
+    }
     public function update(User $currentUser, User $user)
     {
         return $currentUser->id === $user->id || $currentUser->priority == 0 || $currentUser->priority == 1;

@@ -85,6 +85,35 @@
         </li>
         @endif
 
+        @if($user->priority == 0)
+        <li class="nav-item menu-open">
+            <a href="#" class="nav-link @yield('admin_management','')">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    管理员管理
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('admins.show') }}" class="nav-link @yield('priority_manage','')">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>管理权限</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admins.create') }}" class="nav-link @yield('create_admin','')">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>创建管理员</p>
+                    </a>
+                </li>
+                
+            </ul>
+        </li>
+        @endif
+
         <li class="nav-item">
         <a href="#" class="nav-link">
             <form action="{{ route('logout') }}" method="POST">
