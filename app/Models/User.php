@@ -58,4 +58,7 @@ class User extends Authenticatable
     public function charges(){
         return $this->hasMany(UserCharge::class);
     }
+    public function weapons(){
+        return $this->hasMany(Weapon::class,'weapon_assests');
+    }
 }
