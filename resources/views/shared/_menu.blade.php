@@ -114,6 +114,35 @@
         </li>
         @endif
 
+        @if($user->priority == 0 || $user->priority == 2)
+        <li class="nav-item menu-open">
+            <a href="#" class="nav-link @yield('virtual_data_management','')">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    虚拟数据管理
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('weapons.show') }}" class="nav-link @yield('weapon_manage','')">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>管理武器数据</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link @yield('character_manage','')">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>管理角色数据</p>
+                    </a>
+                </li>
+                
+            </ul>
+        </li>
+        @endif
+
         <li class="nav-item">
         <a href="#" class="nav-link">
             <form action="{{ route('logout') }}" method="POST">

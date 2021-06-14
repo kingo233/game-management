@@ -50,3 +50,6 @@ Route::get('admins/show','AdminsController@show')->name('admins.show');
 Route::post('admins/{admin}/modify','AdminsController@modify')->name('admins.modify');
 Route::get('admins/create','AdminsController@create')->name('admins.create');
 Route::post('admins/store','AdminsController@store')->name('admins.store');
+
+Route::get('weapons/show','WeaponController@show')->name('weapons.show');
+Route::post('weapons/{weapon}/update','WeaponController@update')->name('weapons.update');
