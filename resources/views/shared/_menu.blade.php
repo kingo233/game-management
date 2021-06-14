@@ -132,12 +132,6 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link @yield('character_manage','')">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>管理角色数据</p>
-                    </a>
-                </li>
                 
             </ul>
         </li>
